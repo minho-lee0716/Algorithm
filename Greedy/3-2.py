@@ -6,6 +6,7 @@
 조건3. 입력으로 주어지는 K는 항상 M보다 작거나 같다.
 '''
 
+# 나의 풀이
 n, m, k = map(int, input().split()) # 첫째 줄에 n, m, k의 값을 받아와줍니다.
 numbers = list(map(int, input().split())) # 둘쨰 줄에 n개 만큼의 자연수를 받아와줍니다.
 numbers.sort() # 정렬을 시켜줍니다.
@@ -35,3 +36,48 @@ else:
             i += 1
 
 print(result)
+
+# 단순하게 푸는 답안 예시
+# N, M, K를 공백으로 구분하여 입력받기
+n, m, k = map(int, input().split())
+# N개의 수를 공백으로 구분하여 입력받기
+data = list(map(int, input().split()))
+
+data.sort() # 입력받은 수들 정렬하기
+first = numbers[n - 1] # 가장 큰 수
+second = numbers[n - 2] # 두 번째로 큰 수
+
+result = 0
+
+while True:
+    for i in range(k): # 가장 큰 수를 K번 더하기
+        if m == 0: # m이 0이라면 반복문 탈출
+            break
+        result += first
+        m -= 1 # 더할 때마다 1씩 빼기
+    if m == 0: # m이 0이라면 반복문 탈출
+        break
+    result += second # 두 번째로 큰 수를 한 번 더하기
+    m -= 1
+
+print(result) # 최종 답안 출력
+
+# 답안 예시
+# N, M, K를 공백으로 구분하여 입력받기
+n, m, k = map(int, input().split())
+# N개의 수를 공백으로 구분하여 입력받기
+data = list(map(int, input().split()))
+
+data.sort() # 입력받은 수들 정렬하기
+first = numbers[n - 1] # 가장 큰 수
+second = numbers[n - 2] # 두 번째로 큰 수
+
+# 가장 큰 수가 더해지는 횟수 계산
+count = int(m / (k + 1)) * k
+count += m % (k + 1)
+
+result = 0
+result += (count) * first # 가장 큰 수 더하기
+result += (m - count) * second
+
+print(result) # 최종 답안 출력
