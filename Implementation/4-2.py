@@ -13,9 +13,19 @@
 '''
 
 def my_solution():
-    return 0
 
-# my_solution()
+    n = int(input())
+    count = 0
+
+    for i in range(n + 1):
+        for j in range(60):
+            for k in range(60):
+                if '3' in str(i) + str(j) + str(k): # if '3' in str(i) or str(j) or str(k): 는 왜 안되는지 모르겠음.
+                    count += 1
+
+    print(count)
+
+    return 0
 
 def sample_answer1():
     # H를 입력받기
@@ -31,4 +41,5 @@ def sample_answer1():
     print(count)
     return 0
 
-sample_answer1()
+my_solution()
+#sample_answer1()
